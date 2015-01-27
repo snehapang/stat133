@@ -1,0 +1,5 @@
+name = "Sneha Pang"
+SID = "23524881"
+email = "snehapang@berkeley.edu"
+github_name = "snehapang"
+status = "enrolled"
