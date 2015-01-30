@@ -45,8 +45,7 @@ y = seq(from=2, to=200, by=2)
 
 # Create the variable
 # << z >> : a vector of length 20 with character entries, "hw1", "hw2", ..., "hw20"
-z = c('hw1', 'hw2', 'hw3', 'hw4', 'hw5', 'hw6', 'hw7', 'hw8', 'hw9', 'hw10', 'hw11', 'hw12', 'hw13', 'hw14', 'hw15', 'hw16', 'hw17', 'hw18', 'hw19', 'hw20')   
-
+z = paste("hw",1:20,sep="")
 
 # Create the variable
 # << m >> : a vector of length 100 with entries from a standard normal distribution
@@ -79,28 +78,29 @@ load("family.rda")
 
 ### Check what data type the variable is with : class(family)
 ### now take a look at the data frame by typing family in the console.
-
+class(family)
 # Create a new data frame 
 # << family.men >> : a data frame that is a subset of family, with only the men
-
+family.men = subset(family,gender=="m")
 
 # Create a new data frame 
 # << family.young >> : a data frame, subset of family, with only people *under* 40
-
+family.young = subset(family,age<"40")
 
 # Create a new data frame 
 # << family.30y68i >> : a data frame, subset of family, with only people *over* 30, *shorter* than 68 in
-
+family.30y68i = subset(family,age>"30" & height<"68")
 
 # Formula for BMI : BMI = (weight in lbs) / (height in in)^2 * 703
 # Note: the dataframe has weight in lbs and height in in as required.
 # Create a new variable 
 # << bmi >> : a vector with the BMI of each family member 
 
-
+bmidataframe = transform(family, BMI = (weight/(height^2))*703)
+bmi = bmidataframe$BMI
 # Create a new data frame
 # << family2 >> : family with an added column of BMI, with column name bmi
-
+family2 = bmidataframe
 
 
 ##################################################################################
