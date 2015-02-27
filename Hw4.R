@@ -1,3 +1,4 @@
+
 # HW 4
 # Writing functions
 # Due Thursday February 26th by midnight 
@@ -47,12 +48,11 @@ powers=function(x,k){
   x.power=matrix(nrow=length(x),ncol=k)
   for(i in i:k){
     x.power[,i]=(x^i)
-    print(x.power)
   }
-    
+  print(x.power)
 }
 powers(x,k)
-#for some reason, this produces k matrices. The kth matrix is correct. 
+
 
 
 #Office hour notes: x.powe[,i] = x^i (changer i = 1 then 2 all the way up to k) do inside for loop
