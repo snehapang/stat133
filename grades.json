@@ -1,0 +1,23 @@
+{
+    "email": "snehapang@berkeley.edu", 
+    "github_name": "snehapang", 
+    "grades": {
+        "hw1": {
+            "note": "", 
+            "hash": "0d6e6af110973730e985b975446413cfb2ddb71e", 
+            "earned": 0, 
+            "possible": 20, 
+            "penalty": 0, 
+            "parts": {
+                "hw1": {
+                    "possible": 20, 
+                    "earned": 0
+                }
+            }
+        }
+    }, 
+    "login": "snehapang", 
+    "name": "Sneha Pang", 
+    "status": "enrolled", 
+    "url": "git@github.com:snehapang/stat133.git"
+}
