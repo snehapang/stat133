@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> FETCH_HEAD
 # HW 4
 # Writing functions
 # Due Thursday February 26th by midnight 
