@@ -335,6 +335,10 @@ load("rainfallCO.rda")
 # Create a variable 
 # max.rain : a vector of length 5 with the maximum rainfall at each station
 max.rain=c(max(rain$st050183),max(rain$st050263),max(rain$st050712),max(rain$st050843),max(rain$st050945))
+#that is hard code. below is using apply statement. both work
+max.rain
+
+
 # Create a variable 
 # mean.rain : a vector of length 5 with the average rainfall at each station
 mean.rain=c(mean(rain$st050183),mean(rain$st050263),mean(rain$st050712),mean(rain$st050843),mean(rain$st050945))
