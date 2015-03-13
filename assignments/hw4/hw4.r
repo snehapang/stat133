@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> FETCH_HEAD
 # HW 4
 # Writing functions
 # Due Thursday February 26th by midnight 
@@ -9,14 +13,27 @@
 # Input variable:
 # <data.list>: a list whose elements are vectors of varying length
 
+data.list=list(c(1:3),c(2:8),c(1:5),c(4:9))
+
 # Output variable:
 # <element.lengths>: a numeric vector whose entries are the lengths of each
 #   element of <data.list>
 
+element.lengths=c(lapply(data.list,length))
+
 listLengths <- function(data.list) {
+  
+  listLengths=function(data.list){
+    element.lengths=c(lapply(data.list,length))
+    return(element.lengths)
+  }
 
-    # your code here
-
+#checking to see if it works below
+listLengths(data.list)
+#it does!
+  
+  # your code here
+  
 }
 
 #### Function 2
@@ -26,20 +43,40 @@ listLengths <- function(data.list) {
 # <x> : a numeric vector of length n
 # <k> : an integer
 
+x=c(1:3)
+k=3
+
+
+powers=function(x,k){
+  x.power=matrix(nrow=length(x),ncol=k)
+  for(i in i:k){
+    x.power[,i]=(x^i)
+  }
+  print(x.power)
+}
+powers(x,k)
+
+
+
+#Office hour notes: x.powe[,i] = x^i (changer i = 1 then 2 all the way up to k) do inside for loop
+#for(i in i:k) {runs whatevers inside curly bracket} for each i x^i replace the ith 
+
+
 # Output variable
 # <x.powers> : A matrix of size [n x k] where the first column is x, the second column x^2, the third column x^4, etc.
 #              the column names should be : "x", "x^2", "x^3" etc.
 
-powers <- function(x, k){
 
-}
 
- 
+
 #### Function #3
 #### Implement the function "recipeConversion"
 
 # Input variable:
 # <recipe> : A data frame with three columns named "amount", "unit" and "ingredient"
+
+
+
 
 # Output variable:
 # <recipe.metric> : A data frame with three columns where cups have been converted to ml and ounces to grams.
@@ -47,6 +84,8 @@ powers <- function(x, k){
 #                   both ml and gr should be rounded to the nearest multiple of 5,
 #                   e.g. a row that read : [2 cups flour] should now be [475 ml flour]
 #                   Note, if the "unit" is neither "cup"/"cups" nor "oz" the row should not be changed
+
+
 
 # The conversion constants are: 
 # 1 cup = 236.6 ml and 1 oz = 28.3 gr
@@ -63,9 +102,37 @@ powers <- function(x, k){
 # function should stop and print out an error message
 
 # Put your code here
-recipeConversion <- function(recipe){
+amount=c(1,2,304,4,326)
+unit=c("cup","cups","ml","oz","gr")
+ingredient=c("flour","sugar","salt","eggs","oil")
+recipe=data.frame(amount,unit,ingredient)
 
+recipe.metric = function(recipe){
+  num = nrow(recipe)
+  for (i in 1:num){
+    if (recipe[i,'unit'] == 'cup'){
+      recipe[i,'amount']=recipe[i,'amount']*236.6
+      recipe[i,'unit']="ml"
+    }
+    if (recipe[i,'unit'] == 'cups'){
+      recipe[i,'amount']=recipe[i,'amount']*236.6
+      recipe[i,'unit']="ml"
+    }
+    if(recipe[i,'unit'] == 'oz'){
+      recipe[i,'amount']=recipe[i,'amount']*28.3
+      recipe[i,'unit']="gr"
+    }
+  }
+  for(i in 1:num){
+    if (recipe[i,'amount'] > 0){
+      recipe[i,'amount']=round(recipe[i,'amount']/5)*5
+    }
+  }
+  
+  print(recipe)
 }
+recipe.metric(recipe)
+
 
 
 #### Function #4a
@@ -74,6 +141,10 @@ recipeConversion <- function(recipe){
 # Input variable:
 # <x> : data vector
 # <B> : the number of boostrap iterations
+x=c(1:10)
+B=1000
+
+
 
 # Output variable:
 # <boot.sigma2.est> : Bootstrap estimate for the variance of the sample mean (see lecture notes)
@@ -89,8 +160,14 @@ recipeConversion <- function(recipe){
 # -- Calculate, and store, the mean of this bootstrap sample, call that mu_i (i in 1:B)
 # -- The bootstrap variance is the sample variance of mu_1, mu_2, ..., mu_B
 
-bootstrapVarEst <- function(x, B){
-
+bootstrapVarEst <- function(x, B){boot_mean <- rep(0,B) #an array of 0s B-long
+                                  for (i in 1:B){
+                                    dat <- sample(x, size=length(x), replace=T)
+                                    boot_mean[i] <- mean(dat)
+                                  }
+                                  boot.sigma2.est=var(boot_mean)
+                                  print(boot.sigma2.est)
+  
 }
 
 #### Function #4b
@@ -98,6 +175,7 @@ bootstrapVarEst <- function(x, B){
 
 # Input variable:
 # <x> : data vector
+x=c(1:10)
 
 # Output variable:
 # <jack.sigma2.est> : Jackknife estimate for the variance of the sample mean (see lecture notes)
@@ -111,9 +189,19 @@ bootstrapVarEst <- function(x, B){
 #     for this reduced sample calculate the sample mean (get mu_1, mu_2, ..., mu_n)
 # -- The jackknife variance is the sample variance of mu_1, mu_2, ..., mu_n
 
-jackknifeVarEst <- fuction(x){
 
+
+
+jackknifeVarEst <- function(x,B){jack_mean <- rep(0,B)
+                                  for (i in 1:B){
+                                    dat <- sample(x, size=length(x)-1, replace=F)
+                                    jack_mean[i] <- mean(dat)
+                                  }
+                                  jack.sigma2.est=var(jack_mean)
+                                  print(jack.sigma2.est)
+                                  
 }
+jackknifeVarEst(x,B)
 
 #### Function #4c
 #### Implement the function "samplingVarEst"
@@ -127,8 +215,21 @@ jackknifeVarEst <- fuction(x){
 
 # Note: this function calls the previous two functions.
 
-samplingVarEst <- function(  ){
 
+
+samplingVarEst <- function(x,B,type){
+  if(type=="bootstrap"){boot_mean <- rep(0,B)
+                       for (i in 1:B){
+                         dat <- sample(x, size=length(x), replace=T)
+                         boot_mean[i] <- mean(dat)
+                       }
+                       boot.sigma2.est=var(boot_mean)
+                       print(boot.sigma2.est)}
+  if(type=="jackknife"){jack_mean <- rep(0,B)
+                       for (i in 1:B){
+                         dat <- sample(x, size=length(x)-1, replace=F)
+                         jack_mean[i] <- mean(dat)
+                       }
+                       jack.sigma2.est=var(jack_mean)
+                       print(jack.sigma2.est)}
 }
-
-
