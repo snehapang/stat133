@@ -67,19 +67,16 @@ subset.nonsmoke.age=c(subset.nonsmoke$age)
 # Your function should return the average gestation period for every observation
 # whose value in <ages> is strictly less that <age.cutoff>.
 
-age.cutoff=
+
 a=c(infants[infants$age,c("age")])
 b=c(infants[infants$age,c("gestation")])
 
 
 gestByAge <- function(age.cutoff, ages, gestation){
-  for(i in ages){
-  if(ages>age.cutoff){
-    return(mean(gestation,na.rm=T))
-  }
+  
+  # your code here
+  
 }
-}
-
 
 # Please produce a plot of birthweight (y-axis) against gestation period. Your
 # plot should contain the following features:
