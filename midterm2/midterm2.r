@@ -152,6 +152,16 @@ sd.cache=lapply(Cache500,sd)
 # NA IF Cache500[[i]] has less than 50 entries.
 
 #mean.long.cache <- <your code here>
+myfunction=function(x){
+  if(length(x)>50){
+    return(mean(x))
+  }
+  if(length(x)<50){
+    return("NA")
+  }
+}
+mean.long.cache=lapply(Cache500,myfunction)
+   
 
 
 
