@@ -356,3 +356,8 @@ day4=floor(day$st050843)
 day5=floor(day$st050945)
 
 n1989.rain=c(sum(table(day1)[names(table(day1))==1989]), sum(table(day2)[names(table(day2))==1989]), sum(table(day3)[names(table(day3))==1989]), sum(table(day4)[names(table(day4))==1989]), sum(table(day5)[names(table(day5))==1989]))
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> FETCH_HEAD
