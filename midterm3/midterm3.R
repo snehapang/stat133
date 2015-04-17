@@ -9,6 +9,14 @@
 #   <num.dot>: an integer indicating how many elements of <chvec> contain the "."
 #     symbol. For example: numDotElements(c('USA', 'U.S.A', '...')) should return 2
 
+numDotElements=function(string){
+  x=grep(pattern=".",x=string)
+  return(length(x))
+}
+
+teststring=c("USA","U.S.A")
+
+
 
 
 
@@ -39,14 +47,27 @@ all.equal(sumDigits("abcdefg"), 0)
 #   <herchvec>: The same character vector with the required substitutions.
 
 
+hisToHers=function(chvec){
+  herchvec=strsplit(chvec," ")
+  herchvec=gsub("\\bhim\\b","her",herchvec)
+  herchvec=gsub("\\bhe\\b","she",herchvec)
+  herchvec=gsub("\\bhis\\b","her",herchvec)
+  herchvec=paste(herchvec,sep="")
+  return(herchvec)
+}
+
+
 # A test case
-all.equal(
-  hisToHers("he went to the store his mother gave him"), 
-  "she went to the store her mother gave her"
-)
+  hisToHers("he went to the store his mother gave him")
+  hisToHers("she went to the store her mother gave her")
 
 
-# Write a function called mostCommonLetter that finds the most common 
+
+
+
+
+
+#Write a function called mostCommonLetter that finds the most common 
 # letter in a string. If there is a tie for most common letter return 
 # all of the letters that were most common. Your function should 
 # convert all letters in the string to *lower case* and you should 
@@ -58,4 +79,16 @@ all.equal(
 #  <letter> The most common letter or letters in the string.
 # For example mostCommonLetter("aabbccccdddd") should return 
 # [1] "c" "d"
+
+
+mostCommonLetter=function(string){
+  string=tolower(gsub("[[:digit:]]","",string))
+  string=string[string!=""]
+  tab=table(unique(strsplit(string,"")))
+  return(which(tab==max(tab)))
+}
+
+mostCommonLetter("aaaaaa222222222bhw")
+
+
 
