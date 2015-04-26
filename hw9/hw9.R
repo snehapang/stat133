@@ -35,6 +35,8 @@ head(mtcars)
 # The column should be called "model" and it should have the names of car models 
 # (i.e. the current row names).
 
+mtcars$model=rownames(mtcars)
+
 # < your code here>
 
 # Now make a bubble chart using the following instructions:
@@ -44,12 +46,15 @@ head(mtcars)
 # Use levels of 'gear' to represent color of bubbles;
 # Finally use the 'options' argument to add axis labels and main title.
 
+bub=gvisBubbleChart(mtcars,idvar="model",xvar="disp",yvar="mpg",sizevar="hp",colorvar="gear",options=list(title="Motor Trend Car Road Tests",vAxes="[{title:'Miles Per Gallon'}]",hAxes="[{title:'Displacement (cubic inches)'}]"))               
+
 # optionlist <- < your code here>
 # bub <- gvisBubbleChart( < your code here >)
 
 # Now plot your bubble chart output, 'bub', 
 # the chart will show up in a new tab in your web browser.
 
+plot(bub)
 # < your code here>
 
 ##### Motion Chart
@@ -70,8 +75,12 @@ load("WorldBank.RData")
 
 # WorldDat <- < your code here>
 
+WorldDat=WorldBank[,c(2:6,10)]
+
 # As you can see, there are missing values in this data frame.
 # Get rid of all rows with one or more NAs.
+
+WorldDat=WorldDat[complete.cases(WorldDat),]
 
 # < your code here >
 
@@ -84,6 +93,7 @@ load("WorldBank.RData")
 # for now just use the above instructions as default.
 
 # Motion <- gvisMotionChart( < your code here > )
+Motion=gvisMotionChart(WorldDat,idvar="country",timevar="year",yvar="fertility.rate",xvar="life.expectancy",colorvar="region",sizevar="population",options=list(title="Correlation between Life Expectancy, Fertility Rate, and Population over time",vAxes="[{title='Fertility Rate'}]",hAxes="[{title='Life Expectancy'}]"))
 
 # Plot your motion chart. It should appear in your web browser. Play around with it!
 plot(Motion)
