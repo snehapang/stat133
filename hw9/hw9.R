@@ -93,7 +93,10 @@ WorldDat=WorldDat[complete.cases(WorldDat),]
 # for now just use the above instructions as default.
 
 # Motion <- gvisMotionChart( < your code here > )
-Motion=gvisMotionChart(WorldDat,idvar="country",timevar="year",yvar="fertility.rate",xvar="life.expectancy",colorvar="region",sizevar="population",options=list(title="Correlation between Life Expectancy, Fertility Rate, and Population over time",vAxes="[{title='Fertility Rate'}]",hAxes="[{title='Life Expectancy'}]"))
+Motion=gvisMotionChart(WorldDat,idvar="country",timevar="year",yvar="fertility.rate",
+xvar="life.expectancy",colorvar="region",sizevar="population")#,
+#options=list(title="Correlation between Life Expectancy, Fertility Rate, and Population over time",
+#vAxis="{title='Fertility Rate'}",hAxis="{title='Life Expectancy'}"))
 
 # Plot your motion chart. It should appear in your web browser. Play around with it!
 plot(Motion)

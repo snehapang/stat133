@@ -1,3 +1,34 @@
+#lecture notes 4/16/15
+# linear regression
+#lm stands for linear model. The linear comes from the fact we have two variables with a linear relationship and 
+#observations are scattered along that line
+# glm is a function (generalized linear model) and generalized means that any kind of relationship of two variables
+#whether linear or not can be used to fit the data
+  #for example, y=a+bx+cx^2 which is a polynomial and not linear. GLM will still work on this
+  #example: x=rep(seq(1,4,length=10),3)
+            #y=5 + x + 4x^2 + rnmorn(30,0,3)
+            #mydata=dataframe(x,y) then look at plot y as function of x which is plot(y~x)
+            #you see a quadratic function
+            #then use function lm(x,y) or lm(y~x) and save it as my.lm
+              #if you do class(my.lm) you see lots of things that come up--lots of things go into this call then. Some of these
+              #include coefficients (intercept of slope), residuals (difference between line and data point),
+              #summary(that thing that comes on calculator with min, max, quartiles, etc.In the summary also has p value
+              #and if low, then line is good fit for data)
+            #points(my.lm$fitted.values)
+#the function predict tells you what model tells you point will be rather than what point actually is
+
+
+
+#numerical optimization:
+
+  # - definition: finding a value of x to make some function f(x) as large or as small as possible
+  # - used to calculate least squares, glm, and maximum likelihood estimates (MLE)
+
+
+
+
+
+
 xUnique = 1:5
 trueCoeff = c(0, 1, 1)
 
