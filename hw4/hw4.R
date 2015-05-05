@@ -49,7 +49,7 @@ k=3
 
 powers=function(x,k){
   x.power=matrix(nrow=length(x),ncol=k)
-  for(i in i:k){
+  for(i in 1:k){
     x.power[,i]=(x^i)
   }
   print(x.power)
