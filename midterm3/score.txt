@@ -1,0 +1,18 @@
+Total: 14/20
+
+Function 1
+5/5
+
+Function 2
+0/5
+Not attempted
+
+Function 3
+5/5
+
+Function 4
+4/5
+Replace line 88 with 
+  return(names(tab)[tab==max(tab)])
+
+
