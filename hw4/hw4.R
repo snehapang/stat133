@@ -26,15 +26,15 @@ listLengths <- function(data.list) {
   listLengths=function(data.list){
     element.lengths=c(lapply(data.list,length))
     return(element.lengths)
-  }
+  }}
 
 #checking to see if it works below
-listLengths(data.list)
+#listLengths(data.list)
 #it does!
   
   # your code here
   
-}
+#}
 
 #### Function 2
 #### Implement the function "powers"
@@ -54,7 +54,7 @@ powers=function(x,k){
   }
   print(x.power)
 }
-powers(x,k)
+
 
 
 
@@ -131,7 +131,7 @@ recipe.metric = function(recipe){
   
   print(recipe)
 }
-recipe.metric(recipe)
+
 
 
 
@@ -201,7 +201,7 @@ jackknifeVarEst <- function(x,B){jack_mean <- rep(0,B)
                                   print(jack.sigma2.est)
                                   
 }
-jackknifeVarEst(x,B)
+
 
 #### Function #4c
 #### Implement the function "samplingVarEst"
