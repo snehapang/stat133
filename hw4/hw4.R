@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 
->>>>>>> FETCH_HEAD
 # HW 4
 # Writing functions
 # Due Thursday February 26th by midnight 
@@ -26,15 +23,15 @@ listLengths <- function(data.list) {
   listLengths=function(data.list){
     element.lengths=c(lapply(data.list,length))
     return(element.lengths)
-  }
+  }}
 
 #checking to see if it works below
-listLengths(data.list)
+#listLengths(data.list)
 #it does!
   
   # your code here
   
-}
+#}
 
 #### Function 2
 #### Implement the function "powers"
@@ -54,7 +51,7 @@ powers=function(x,k){
   }
   print(x.power)
 }
-powers(x,k)
+
 
 
 
@@ -107,7 +104,7 @@ unit=c("cup","cups","ml","oz","gr")
 ingredient=c("flour","sugar","salt","eggs","oil")
 recipe=data.frame(amount,unit,ingredient)
 
-recipe.metric = function(recipe){
+recipeConversion = function(recipe){
   num = nrow(recipe)
   for (i in 1:num){
     if (recipe[i,'unit'] == 'cup'){
@@ -131,7 +128,7 @@ recipe.metric = function(recipe){
   
   print(recipe)
 }
-recipe.metric(recipe)
+
 
 
 
@@ -201,7 +198,7 @@ jackknifeVarEst <- function(x,B){jack_mean <- rep(0,B)
                                   print(jack.sigma2.est)
                                   
 }
-jackknifeVarEst(x,B)
+
 
 #### Function #4c
 #### Implement the function "samplingVarEst"
@@ -217,7 +214,7 @@ jackknifeVarEst(x,B)
 
 
 
-samplingVarEst <- function(x,B,type){
+samplingVarEst <- function(x,type,B=1000){
   if(type=="bootstrap"){boot_mean <- rep(0,B)
                        for (i in 1:B){
                          dat <- sample(x, size=length(x), replace=T)
