@@ -54,35 +54,44 @@ email.address <- ""
 # [1 pt]
 # Create [x], a numeric vector of length 1000 with 
 # entries: 5, 10, 15, etc.
-x <- <your code here>
+x=seq(from=5,by=5,length.out=1000)
+
   
 # [1 pt]
 # Create [y], a logical vector of length 1000 
 # with y[i]=T if x[i] is divisible by 10, otherwise F
 
-  y <- <your code here>
-  
+div=function(x){
+  y=rep(0,times=1000)
+  for(i in 1:length(x)){
+    if(floor(x[i]/10)==(x[i]/10)){
+      y[i]=T}
+    else{y[i]=F}
+  }
+  return(y)
+}
+y=div(x)  
   
 # [1 pt]
 # Create [z], a numeric vector of length 111 with entries
 # that are drawn from a standard normal distribution (hint: rnorm)
 # *and* stored in increasing order
 set.seed(42)
-z <- <your code here>
+z=sort(rnorm(n=111),decreasing=FALSE)
   
   
 # [1 pt]
 # Create [v], a numeric vector with :
 # a random permutation of the even numbers from 2 to 222
   set.seed(31415)
-v <- <your code here>
+v=sample(seq(from=2,to=222,by=2))
 
   
 # [1 pt]
 # Create [w], a random permutation of the numeric values of a deck of cards
 # (i.e. just the numbers 1 through 13 each repeated 4 times)
 set.seed(2718)
-w <- <your code here>
+w=sample(rep(c(1:13),times=4))
 
   
 # [1 pt]
@@ -90,15 +99,14 @@ w <- <your code here>
 # Exponential random variables (hint: rexp) with rate 3
 # (arrange the values by column, as per default)
 set.seed(344)
-m <- <your code here>
-
+m=matrix(rexp(n=100,rate=3),nrow=10,ncol=10,byrow=FALSE)
   
 # [1 pt]
 # Create [l], a list with 12 elements, each a vector of length 100.
 # Each vector of length 100 of Poisson (hint:rpois) random variables with mean 5
   set.seed(71)
-<your code here>
-
+  
+l <- lapply(1:12, function(x) rpois(100, 5))
 
 # For the next few tasks you will use the data frame family (size 14x5)
 # LEAVE AS IS:
@@ -106,22 +114,24 @@ load("family.rda")
 
 # [1 pt]
 # Create [f1] a subset of family with only women age 50 or over
-f1 <- <your code here>
 
+f1.prime=family[family$gender=="f",]
+f1=f1.prime[f1.prime$age>50,]
   
 # [1 pt]
 # Create [f2] a subset of family with only men 6 foot tall or more
-f2 <- <your code here>
+f2.prime=family[family$gender=="m",]
+f2=f2.prime[f2.prime$height>72,]
 
   
 # [1 pt]
 # Create [f3] a subset of family of people whose name starts with T
-f3 <- <your code here>
+f3=family[substr(family$name,1,1)=="T",]
   
 
 # [1 pt]
 # Create [f4] a subset of family with just the youngest individual (so just one row)
-f4 <- <your code here>
+f4=family[family$age==min(family$age),]
 
 
 # for the next two tasks you will use the data frame infants (size 1236x15)
@@ -130,12 +140,16 @@ load("KaiserBabies.rda")
 
 # [2 pt]
 # Create a table [t] of the education level ($ed) of all married ($marital) first time ($parity=1) mothers:
-t <- <your code here>
+t1=infants[infants$marital=="Married",]
+t2=t1[t1$parity==1,]
+t=table(t2$ed)
 
 
 # [2 pt]
 # Calculate [mw], the average birthweight ($bwt) of all babies whose were full term, i.e. gestation equal or more than 259 days.
-mw <- <your code here>
+mw1=infants[infants$gestation>259,]
+mw=mean(mw1$bwt,na.rm=TRUE)
+
   
   
 #################################################################
@@ -170,12 +184,18 @@ mw <- <your code here>
 # The plotting symbol should be a red star (*)
 # Put on custom made x-axis and y-axis labels that fully describe the variables
 # Add a vertical line at gestation=259 (full length pregnancy)
+plot(x=infants$gestation,y=infants$bwt,type="p",pch=8,col="red",xlab="Gestation Time in Days",
+     ylab="Birthweight")
+abline(v=259,col="black")
 
 
 # [6 pts]
 # Make a histogram of mother's age (age) and superimpose on it a _blue_ density plot (same variable)
 # Note that the y-axis of the histogram and the density have to be the same...
 # Add x-axis labels
+hist(infants$age,xlab="Age")
+lines(density(infants$age,na.rm=TRUE),col="blue")
+
 
 
 #################################################################
@@ -202,7 +222,7 @@ mean.cache <- <your code here>
 # Create [sd.cache], a vector of length 500 where each entry is the sd
 # of the corresponding element of the list Cache500
 
-sd.cache <- <your code here>
+sd.cache=lapply(Cache500,sd)
 
 # [4 pts]
 # Create [mean.long.cache], a vector where 
@@ -217,7 +237,7 @@ mean.long.cache <- <your code here>
 # Create a variable [max.petal.width] _a numeric vector of length 3_
 # that has the maximum petal length for each iris species.
 
-max.petal.width <- <your code here>
+max.petal.width=as.vector(by(iris$Petal.Width,iris$Species,max))
 
 #################################################################
 ##### PART IV : functions [20 pts]
@@ -229,6 +249,7 @@ max.petal.width <- <your code here>
 # Output : a matrix of data frame that is like the input except 
 # -- the first column has been removed
 # -- what was the first column is now row names.
+
 
 # Example, make a small 2x4 matrix, test:
 # test <- matrix(c(1, 5, 3, 8, 2, 5, 7, 9), ncol=4, byrow=T)
@@ -242,11 +263,10 @@ max.petal.width <- <your code here>
 # 1    5    3    8
 # 2    5    7    9
 
-firstColToNames <- function(  ){
-  <your code here>
-  
-}
-
+firstColToNames <- function(m){
+  m1=m[,-1]
+  rownames(m1)=m[,1]
+  return(m1)}
     
 # [6 pts]
 # Write a function [longerRange()] with
@@ -257,8 +277,7 @@ firstColToNames <- function(  ){
 # The function should ignore NA values (i.e. if a matrix has an entry that is NA)
 
 longerRange <- function(m1, m2){
-  <your code here>  
-}
+
 
 # [8 pts]
 # Write a function [TempConv()] that takes
@@ -275,9 +294,14 @@ longerRange <- function(m1, m2){
 # so e.g. 30 F=-1.11 C and 30 C = 86 F
 
 TempConv <- function(t, scale){
-  <your code here>
-  
-}
+  if(grepl("F",scale)==TRUE){
+    value=((t-32)*(5/9))
+    return(paste(value, "C", sep=" "))
+  }
+  else{
+    value=((t*(9/5))+32)
+    return(paste(value, "F", sep=" "))
+  }}
 
 #################################################################
 ##### PART V : simulations [10 pts]
@@ -344,17 +368,18 @@ Bvec <- c(20, 100, 1000, 5000)
 #################################################################
 ##### PART VI : string manipulation and regular expressions [20 pts]
 
-phrases <- c("coat", "cat", "ct", "mat", "Sat!", "Now?", "match", "How much? $10", "7 cats", "ratatatcat", "atatatatatatatatat")
+phrases <- c("coat", "cat", "ct", "mat", "Sat!", "Now?", "match", 
+             "How much? $10", "7 cats", "ratatatcat", "atatatatatatatatat")
 
 # [2 pts]
 # Create a vector [text1] that lists the elements in phrases that have 
 # a match to "at", anywhere 
-text1 <- <your code here>
+text1=phrases[grep("at",phrases)]
 
 # [2 pts]
 # Create a vector [text2] that lists the elements in phrases that have 
 # a match to "at", _at the end of the phrase_ 
-text2 <- <your code here>
+text2=phrases[grep("at$",phrases)]
 
 # [4 pts]
 # Create a vector [text3] that lists the elements in phrases that have 
@@ -366,14 +391,14 @@ text3 <- <your code here>
 # Create a vector [tests] that is of length 200 and has the entries
 # "test1", "test2", ..., "test200"
 
-tests <- <your code here>
+tests=paste(rep("test",times=200),c(1:200),sep="")
 
 # [3 pts]
 # Take the vector [tests] from above and create a character string
 # [tests.all] (so a vector of length 1)
 # that stores the entries of [tests] as one long string
 # i.e. tests.all should be "test1 test2 test3 ... test200"
-tests.all <- <your code here>
+tests.all=paste(tests,collapse=" ")
 
 # [6 pts]
 # Start with [minchin] which is a character string, create 
@@ -384,7 +409,7 @@ tests.all <- <your code here>
 
 minchin <- "And try as hard as I like, A small crack appears In my diplomacy-dike. By definition, I begin, Alternative Medicine, I continue Has either not been proved to work, Or been proved not to work. You know what they call alternative medicine That's been proved to work? Medicine."
 
-minchin.split <- <your code here>
+minchin.split=as.vector(unlist(strsplit(tolower(minchin),split=" ")))
   
   
 #################################################################
