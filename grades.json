@@ -4,27 +4,44 @@
     "grades": {
         "hw1": {
             "note": "", 
-            "hash": "c63fc1988f5fea10ad6064fb99e78a4a970286ff", 
-            "earned": 20, 
+            "hash": "0d6e6af110973730e985b975446413cfb2ddb71e", 
+            "earned": 0, 
             "possible": 20, 
             "penalty": 0, 
             "parts": {
                 "hw1": {
                     "possible": 20, 
-                    "earned": 20
+                    "earned": 0
                 }
             }
         }, 
         "hw4": {
             "note": "", 
-            "hash": "0043785dad9c1b408bb9e1dcb02627f4d38e90a6", 
-            "earned": 4, 
+            "hash": "2c6d9f8bd6202c20349de8f092e52e88161a1e3a", 
+            "earned": 1, 
             "possible": 20, 
             "penalty": 0, 
             "parts": {
                 "hw4": {
                     "possible": 20, 
-                    "earned": 4
+                    "earned": 1
+                }
+            }
+        }, 
+        "hw2": {
+            "note": "", 
+            "hash": "a68a88c188bbb34bf226e0dd409ed6db99c411e6", 
+            "earned": 19, 
+            "possible": 31, 
+            "penalty": 0, 
+            "parts": {
+                "hw2_fig": {
+                    "possible": 20, 
+                    "earned": 16
+                }, 
+                "hw2": {
+                    "possible": 11, 
+                    "earned": 3
                 }
             }
         }

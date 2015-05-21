@@ -51,6 +51,7 @@
 # the hw3 directory in the file WR1500MeterMen.rda.
 
 # load the data
+load("WR1500MeterMen.rda")
 
 # The name of the object loaded is wr1500m
 # The time (in the column "times") in these data are recorded in seconds, 
@@ -208,7 +209,7 @@ text(1998,240,labels=wr1500m[wr1500m$year=="1998",c("athlete")])
 # It can be loaded into R with
 
 # load( your code here )
-load("SO2012Ctry")
+load("SummerOlympics2012Ctry.rda")
 
 
 #Q6 Take a look at the variables in this data frame.
@@ -390,7 +391,7 @@ symbols(x=b,y=a,circles=no_zero$Total,add=TRUE,bg="#FEB24CAA")
 # and contains information about every athlete who competed 
 # in the Olympics.
 
-# load( )
+load("London2012ALL_ATHLETES.rda")
 #my note: to remove data frames and stuff rm(list=ls()) don't run
 #athletes opens it
 
