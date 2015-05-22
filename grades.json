@@ -44,6 +44,19 @@
                     "earned": 3
                 }
             }
+        }, 
+        "midterm4": {
+            "note": "", 
+            "hash": "485bc1394c2f1d5de23b4fb39fe469bd0c117a98", 
+            "earned": 7, 
+            "possible": 27, 
+            "penalty": 0, 
+            "parts": {
+                "midterm4": {
+                    "possible": 30, 
+                    "earned": 7
+                }
+            }
         }
     }, 
     "login": "snehapang", 
